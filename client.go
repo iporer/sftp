@@ -34,7 +34,7 @@ const maxMaxPacket = (1 << 18) - 1024
 // send packet header: EOF" when copying a large file try lowering this number.
 func MaxPacket(size int) ClientOption {
 	return func(c *Client) error {
-		if size < 1<<15 {
+		if size < 1<<14 {
 			return errors.Errorf("size must be greater or equal to 32k")
 		}
 		if size > maxMaxPacket {
